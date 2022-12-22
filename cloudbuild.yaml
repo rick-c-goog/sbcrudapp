@@ -10,7 +10,7 @@ steps:
   # integration tests app with Maven
   - name: maven:3-eclipse-temurin-17
     entrypoint: mvn
-    args: ["verify"]
+    args: ["verify", "-Dmaven.test.skip=true"]
     dir: ${_DIR}
   # build app with Maven
   - name: maven:3-eclipse-temurin-17
