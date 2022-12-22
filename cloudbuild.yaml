@@ -4,22 +4,23 @@
 substitutions:
   _REPO_NAME: maven-demo-app
   _APP_NAME: demo-app
+  _DIR: .
   _PIPELINE_NAME: security-demo-pipeline
 steps:
   # integration tests app with Maven
   - name: maven:3-eclipse-temurin-17
     entrypoint: mvn
     args: ["verify"]
-    dir: ${_APP_NAME}
+    dir: ${_DIR}
   # build app with Maven
   - name: maven:3-eclipse-temurin-17
     entrypoint: mvn
     args: ["package", "-Dmaven.test.skip=true"]
-    dir: ${_APP_NAME}
+    dir: ${_DIR}
   # Build and tag using commit sha
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '.', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_APP_NAME}:${COMMIT_SHA}', '-f', 'Dockerfile']
-    dir: ${_APP_NAME}
+    dir: ${_DIR}
   # Push the container image to Artifact Registry, get sha256 of the image
   - name: gcr.io/cloud-builders/docker
     entrypoint: /bin/bash
