@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myspringbootapp
+  labels:
+    app: myspringbootapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myspringbootapp
+  template:
+    metadata:
+      labels:
+        app: myspringbootapp
+    spec:
+      containers:
+      - name: myspringbootapp
+        image: myspringbootapp
+        env:
+          - name: LOCATION
+            value: "local dev"

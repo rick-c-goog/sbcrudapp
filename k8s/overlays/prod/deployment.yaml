@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myspringbootapp
+spec:
+  template:
+    spec:
+      containers:
+      - name: myspringbootapp
+        env:
+          - name: PORT
+            value: "8080"
+          # set an env specific variable
+          - name: LOCATION
+            value: "Production"
