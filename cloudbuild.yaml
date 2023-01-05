@@ -3,7 +3,7 @@
 # Update these values, if desired
 substitutions:
   _REPO_NAME: maven-demo-app
-  _APP_NAME: demo-app
+  _APP_NAME: myspringbootapp
   _DIR: .
   _PIPELINE_NAME: security-demo-pipeline
 steps:
