@@ -34,7 +34,10 @@ spec:
         - name: LOCATION
           value: local
         - name: DB_HOST
-          value: ${DB_HOST}        
+          valueFrom:
+            secretKeyRef:
+              name: gke-cloud-sql-secrets
+              key: databaseip        
         - name: DB_PORT
           value: "5432"  
         - name: DB_USER
