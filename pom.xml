@@ -40,11 +40,15 @@
     		<artifactId>snakeyaml</artifactId>
     		<version>1.33</version>
 		</dependency>
+		
+		<!-- turning of due to jakarta servlet issue at runtime 
 		<dependency>
     		<groupId>org.springframework</groupId>
     		<artifactId>spring-web</artifactId>
     		<version>6.0.3</version>
 		</dependency>
+		-->
+		
 		<dependency>
     		<groupId>com.fasterxml.jackson.core</groupId>
     		<artifactId>jackson-databind</artifactId>
