@@ -18,5 +18,28 @@ spec:
       - name: myspringbootapp
         image: myspringbootapp
         env:
-          - name: LOCATION
-            value: "local dev"
+        - name: LOCATION
+          value: development
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: gke-cloud-sql-secrets
+              key: databaseip         
+        - name: DB_PORT
+          value: "5432"  
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: gke-cloud-sql-secrets
+              key: username
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: gke-cloud-sql-secrets
+              key: password
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: gke-cloud-sql-secrets
+              key: database
+
