@@ -28,7 +28,6 @@
 		</dependency>
 
 		<!--dependency fixes start-->
->
 		<dependency>
     		<groupId>org.yaml</groupId>
     		<artifactId>snakeyaml</artifactId>
