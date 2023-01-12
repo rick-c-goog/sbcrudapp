@@ -19,15 +19,67 @@
 	</properties>
 
 	<dependencies>
-
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<!--fix-->
 			<version>3.0.0</version>
+			<!--fix-->
 		</dependency>
 
+		<!--dependency fixes start-->
+		<dependency>
+    		<groupId>org.yaml</groupId>
+    		<artifactId>snakeyaml</artifactId>
+    		<version>1.33</version>
+		</dependency>
+		
+		<!-- turning of due to jakarta servlet issue at runtime 
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-web</artifactId>
+    		<version>6.0.3</version>
+		</dependency>
+		-->
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>6.0.3</version>
+		</dependency>
+
+		<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-databind</artifactId>
+    		<version>2.14.1</version>
+		</dependency>
+		<dependency>
+      		<groupId>org.springframework</groupId>
+     		<artifactId>spring-webmvc</artifactId>
+      		<version>5.3.22</version>
+    	</dependency>
+		<dependency>
+      		<groupId>org.springframework</groupId>
+      		<artifactId>spring-beans</artifactId>
+      		<version>5.3.22</version>
+    	</dependency>
+		<dependency>
+      		<groupId>org.springframework</groupId>
+      		<artifactId>spring-core</artifactId>
+      		<version>5.3.22</version>
+    	</dependency>
+		<dependency>
+      		<groupId>org.springframework.security</groupId>
+      		<artifactId>spring-security-core</artifactId>
+      		<version>5.7.5</version>
+    	</dependency>
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-expression</artifactId>
+    		<version>6.0.3</version>
+		</dependency>
+		<!--dependency fixes end-->
 
 		<!-- tag::actuator[] -->
 		<dependency>
@@ -35,14 +87,6 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<!-- end::actuator[] -->
-
-		<!--Fixes-->
-		<!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
-		<dependency>
-			<groupId>org.yaml</groupId>
-			<artifactId>snakeyaml</artifactId>
-			<version>1.33</version>
-		</dependency>
 
 		<!-- tag::tests[] -->
 		<dependency>
@@ -60,6 +104,9 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+			<!--fix-->
+			<version>42.5.1</version>
+			<!--fix-->
             <scope>runtime</scope>
         </dependency>
 	</dependencies>
