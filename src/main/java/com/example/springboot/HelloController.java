@@ -12,7 +12,7 @@ public class HelloController {
 
 	@GetMapping("/")
 	public String index() {
-        String message= String.format("Hello from Spring Boot running in %s!", location);
+        String message= String.format("Hello from Spring Boot Keybank in %s!", location);
 		return message;
 	}
 
