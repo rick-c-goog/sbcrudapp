@@ -37,10 +37,11 @@ steps:
     args:
     - -c
     - |
-      gcloud deploy releases promote rel-${SHORT_SHA} \
+      gcloud deploy releases promote --release=rel-${SHORT_SHA} \
       --delivery-pipeline=${_PIPELINE_NAME} \
       --region=us-central1 \
       --annotations=commitId=${REVISION_ID} \
+      --rollout-id=rel-${SHORT_SHA}-to-prod-sec-0001 \
       --to-target=prod-sec 
     waitFor: ['qasign']
 images:
