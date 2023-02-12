@@ -1,0 +1,41 @@
+# Overview: build and create a release via Google Cloud Deploy for GKE
+# NOTE: currently requires SCM triggering due to dependency on the COMMIT_SHA variable
+# Update these values, if desired
+substitutions:
+  _REPO_NAME: maven-demo-app
+  _APP_NAME: myspringbootapp
+  _DIR: .
+  _PIPELINE_NAME: security-demo-pipeline
+steps:
+  - name: gcr.io/$PROJECT_ID/kritis-signer
+    entrypoint: /bin/bash
+    args:
+    - -c
+    - |
+      /kritis/signer \
+      -v=10 \
+      -alsologtostderr \
+      -image=$(/bin/cat image-digest.txt) \
+      -policy=./vulnz-signing-policy.yaml \
+      -kms_key_name=${_KMS_KEY_NAME} \
+      -kms_digest_alg=${_KMS_DIGEST_ALG} \
+      -note_name=${_NOTE_NAME}
+    id: qasign
+  # Create release in Google Cloud Deploy
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: /bin/bash
+    args:
+    - -c
+    - |
+      gcloud deploy releases promote rel-${SHORT_SHA} \
+      --delivery-pipeline=${_PIPELINE_NAME} \
+      --region=us-central1 \
+      --annotations=commitId=${REVISION_ID} \
+      --images=${_APP_NAME}=$(/bin/cat image-digest.txt)
+    waitFor: ['qasign']
+images:
+- us-central1-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_APP_NAME}:${COMMIT_SHA}
+options:
+  requestedVerifyOption: VERIFIED
+  pool:
+    name: 'projects/$PROJECT_ID/locations/us-central1/workerPools/private-pool'
