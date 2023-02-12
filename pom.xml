@@ -33,7 +33,12 @@
     		<artifactId>snakeyaml</artifactId>
     		<version>1.33</version>
 		</dependency>
-		
+		<exclusions>
+          <exclusion>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+          </exclusion>
+        </exclusions>
 		<!-- turning of due to jakarta servlet issue at runtime 
 		<dependency>
     		<groupId>org.springframework</groupId>
@@ -107,6 +112,7 @@
 			<!--fix-->
             <scope>runtime</scope>
         </dependency>
+
 	</dependencies>
 
 	<build>
