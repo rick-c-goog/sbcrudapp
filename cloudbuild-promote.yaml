@@ -7,13 +7,19 @@ substitutions:
   _DIR: .
   _PIPELINE_NAME: security-demo-pipeline
 steps:
-  - name: gcr.io/$PROJECT_ID/kritis-signer
+  - name: gcr.io/cloud-builders/docker
     entrypoint: /bin/bash
     args:
     - -c
     - |
       docker image inspect us-central1-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_APP_NAME}:${COMMIT_SHA} --format '{{index .RepoDigests 0}}' > image-digest.txt &&
-      cat image-digest.txt &&
+      cat image-digest.txt
+    id: digest
+  - name: gcr.io/$PROJECT_ID/kritis-signer
+    entrypoint: /bin/bash
+    args:
+    - -c
+    - |
       /kritis/signer \
       -v=10 \
       -alsologtostderr \
@@ -23,6 +29,7 @@ steps:
       -kms_digest_alg=${_KMS_DIGEST_ALG} \
       -note_name=${_NOTE_NAME}
     id: qasign
+    waitFor: ['digest']
   # Create release in Google Cloud Deploy
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     entrypoint: /bin/bash
