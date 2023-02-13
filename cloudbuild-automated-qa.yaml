@@ -32,17 +32,6 @@ steps:
     id: qasign
     waitFor: ['digest']
   # Create release in Google Cloud Deploy
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    entrypoint: /bin/bash
-    args:
-    - -c
-    - |
-      gcloud deploy releases promote --release=rel-${SHORT_SHA} \
-      --delivery-pipeline=${_PIPELINE_NAME} \
-      --region=us-central1 \
-      --annotations=commitId=${REVISION_ID} \
-      --to-target=prod-sec 
-    waitFor: ['qasign']
 images:
 - us-central1-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_APP_NAME}:${COMMIT_SHA}
 options:
