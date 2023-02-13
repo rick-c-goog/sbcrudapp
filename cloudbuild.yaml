@@ -65,7 +65,7 @@ steps:
     args:
     - -c
     - |
-      gcloud builds triggers run deploy-promote --region us-central1 --sha=${COMMIT_SHA}
+      gcloud builds triggers run automated-qa --region us-central1 --sha=${COMMIT_SHA}
     waitFor: ['deploy']
 images:
 - us-central1-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_APP_NAME}:${COMMIT_SHA}
