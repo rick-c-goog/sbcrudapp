@@ -7,6 +7,7 @@ substitutions:
   _DIR: .
   _PIPELINE_NAME: security-demo-pipeline
 steps:
+  # Retrieve the image
   - name: gcr.io/cloud-builders/docker
     entrypoint: /bin/bash
     args:
@@ -16,6 +17,7 @@ steps:
       docker image inspect us-central1-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_APP_NAME}:${COMMIT_SHA} --format '{{index .RepoDigests 0}}' > image-digest.txt &&
       cat image-digest.txt
     id: digest
+  # QA Sign the image 
   - name: gcr.io/$PROJECT_ID/kritis-signer
     entrypoint: /bin/bash
     args:
@@ -31,7 +33,6 @@ steps:
       -note_name=${_NOTE_NAME}
     id: qasign
     waitFor: ['digest']
-  # Create release in Google Cloud Deploy
 images:
 - us-central1-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_APP_NAME}:${COMMIT_SHA}
 options:

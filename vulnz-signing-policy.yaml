@@ -4,25 +4,7 @@ metadata:
   name: my-vsp
 spec:
   imageVulnerabilityRequirements:
-    maximumFixableSeverity: HIGH
+    maximumFixableSeverity: MEDIUM
     maximumUnfixableSeverity: LOW
     allowlistCVEs:
-    - projects/goog-vulnz/notes/CVE-2022-1471
-    - projects/goog-vulnz/notes/CVE-2022-43551
-    - projects/goog-vulnz/notes/CVE-2022-3821
-    - projects/goog-vulnz/notes/CVE-2021-31879
-    - projects/goog-vulnz/notes/CVE-2022-43552
-    - projects/goog-vulnz/notes/CVE-2022-42898
-    - projects/goog-vulnz/notes/CVE-2022-22970
-    - projects/goog-vulnz/notes/CVE-2022-25857
-    - projects/goog-vulnz/notes/CVE-2022-36518
-    - projects/goog-vulnz/notes/CVE-2022-21724
-    - projects/goog-vulnz/notes/CVE-2022-22968
-    - projects/goog-vulnz/notes/CVE-2022-31197
-    - projects/goog-vulnz/notes/CVE-2022-42004
-    - projects/goog-vulnz/notes/CVE-2022-22965
-    - projects/goog-vulnz/notes/CVE-2022-42003
-    - projects/goog-vulnz/notes/CVE-2023-0286
-
-
-
+    - projects/goog-vulnz/notes/CVE-2022-43680
