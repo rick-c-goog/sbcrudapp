@@ -24,16 +24,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<!--fix-->
-			<version>3.0.0</version>
+			<version>3.0.3</version>
 			<!--fix-->
 		</dependency>
 
 		<!--dependency fixes start-->
-		<dependency>
+		<!--<dependency>
     		<groupId>org.yaml</groupId>
     		<artifactId>snakeyaml</artifactId>
     		<version>1.33</version>
-		</dependency>
+		</dependency>-->
 		
 		<!-- turning of due to jakarta servlet issue at runtime 
 		<dependency>
