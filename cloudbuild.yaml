@@ -24,7 +24,7 @@ steps:
     dir: ${_DIR}
   # Build and tag using commit sha
   - name: maven:3-eclipse-temurin-19
-    entrypoint: mvnw
+    entrypoint: .mvnw
     args: ["spring-boot:build-image","-Dspring-boot:build-image.imageName=us-central1-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_APP_NAME}:${COMMIT_SHA}"]
     dir: ${_DIR}
   # Push the container image to Artifact Registry, get sha256 of the image
