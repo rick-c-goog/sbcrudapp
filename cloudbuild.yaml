@@ -17,6 +17,11 @@ steps:
     entrypoint: mvn
     args: ["package", "-Dmaven.test.skip=true"]
     dir: ${_DIR}
+  # Create Maven Wrapper
+  - name: maven:3-eclipse-temurin-19
+    entrypoint: mvn
+    args: ["wrapper:wrapper"]
+    dir: ${_DIR}
   # Build and tag using commit sha
   - name: maven:3-eclipse-temurin-19
     entrypoint: mvnw
