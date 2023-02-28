@@ -5,7 +5,7 @@ metadata:
 spec:
   imageVulnerabilityRequirements:
     maximumFixableSeverity: HIGH
-    maximumUnfixableSeverity: LOW
+    maximumUnfixableSeverity: MEDIUM
     allowlistCVEs:
     - projects/goog-vulnz/notes/CVE-2022-1471
     - projects/goog-vulnz/notes/CVE-2022-43551
