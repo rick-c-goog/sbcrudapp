@@ -17,21 +17,10 @@ steps:
     entrypoint: mvn
     args: ["package", "-Dmaven.test.skip=true"]
     dir: ${_DIR}
-  # Create Maven Wrapper
-  - name: maven:3-eclipse-temurin-17
-    entrypoint: mvn
-    args: ["wrapper:wrapper"]
-    dir: ${_DIR}
-
-    # Create Maven Wrapper
-  - name: maven:3-eclipse-temurin-17
-    entrypoint: ./mvnw
-    args: ["clean", "install"]
-    dir: ${_DIR} 
-
+  
   # Build and tag using commit sha
   - name: maven:3-eclipse-temurin-17
-    entrypoint: ./mvnw
+    entrypoint: mvn
     args: ["spring-boot:build-image","-Dspring-boot:build-image.imageName=us-central1-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_APP_NAME}:${COMMIT_SHA}"]
     dir: ${_DIR}
   # Push the container image to Artifact Registry, get sha256 of the image
