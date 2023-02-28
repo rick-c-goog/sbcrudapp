@@ -121,6 +121,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>myspringbootapp</name>
+					</image>
+				</configuration>
 			</plugin>
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
