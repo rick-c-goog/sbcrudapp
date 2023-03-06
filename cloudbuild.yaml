@@ -21,7 +21,7 @@ steps:
   # Build and tag using commit sha
   - name: maven:3.9-eclipse-temurin-19
     entrypoint: mvn
-    args: ["spring-boot:build-image","-Dspring-boot.build-image.builder=eclipse-temurin:19","-DskipTests"]
+    args: ["spring-boot:build-image","-DskipTests"]
     dir: ${_DIR}
    # Tag build image
   - name: gcr.io/cloud-builders/docker

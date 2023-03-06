@@ -124,6 +124,8 @@
 				<configuration>
 					<image>
 						<name>myspringbootapp</name>
+						<builder>eclipse-temurin:17</builder>
+						<runImage>gcr.io/distroless/java17-debian11</runImage>
 					</image>
 				</configuration>
 			</plugin>
