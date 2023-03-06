@@ -8,19 +8,24 @@ substitutions:
   _PIPELINE_NAME: security-demo-pipeline
 steps:
   # integration tests app with Maven
-  - name: maven:3-eclipse-temurin-17
+  - name: maven:3.9-eclipse-temurin-19
     entrypoint: mvn
     args: ["verify", "-Dmaven.test.skip=true"]
     dir: ${_DIR}
   # build app with Maven
-  - name: maven:3-eclipse-temurin-17
+  - name: maven:3.9-eclipse-temurin-19
     entrypoint: mvn
     args: ["package", "-Dmaven.test.skip=true"]
     dir: ${_DIR}
+  
   # Build and tag using commit sha
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '.', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_APP_NAME}:${COMMIT_SHA}', '-f', 'Dockerfile']
+  - name: maven:3.9-eclipse-temurin-19
+    entrypoint: mvn
+    args: ["spring-boot:build-image","-DskipTests"]
     dir: ${_DIR}
+   # Tag build image
+  - name: gcr.io/cloud-builders/docker
+    args: ["tag", "${_APP_NAME}", "us-central1-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_APP_NAME}:${COMMIT_SHA}"]
   # Push the container image to Artifact Registry, get sha256 of the image
   - name: gcr.io/cloud-builders/docker
     entrypoint: /bin/bash

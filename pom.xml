@@ -121,13 +121,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
+				<!-- build pack
+					<configuration>
 					<image>
 						<name>myspringbootapp</name>
 						<builder>eclipse-temurin:17</builder>
 						<runImage>gcr.io/distroless/java17-debian11</runImage>
 					</image>
-				</configuration>
+				</configuration> -->
 			</plugin>
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
