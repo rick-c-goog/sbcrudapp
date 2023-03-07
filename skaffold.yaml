@@ -13,30 +13,25 @@ build:
     sync:
       auto: true      
 deploy:
-  kustomize:
-    paths:
-      - k8s/overlays/dev
+   kubectl:
+    manifests: ["k8s/*.yaml"]
 profiles:
   - name: dev
     deploy:
-      kustomize:
-        paths:
-          - k8s/overlays/dev
+      kubectl:
+       manifests: ["k8s/*.yaml"]
   - name: test
     deploy:
-      kustomize:
-        paths:
-          - k8s/overlays/test
+      kubectl:
+        manifests: ["k8s/*.yaml"]
   - name: staging
     deploy:
-      kustomize:
-        paths:
-          - k8s/overlays/staging
+      kubectl:
+        manifests: ["k8s/*.yaml"]
   - name: prod
     deploy:
-      kustomize:
-        paths:
-          - k8s/overlays/prod
+      kubectl:
+        manifests: ["k8s/*.yaml"]
 portForward:
 - resourceType: deployment
   resourceName: myspringbootapp
