@@ -19,19 +19,23 @@ profiles:
   - name: dev
     deploy:
       kubectl:
-       manifests: ["k8s/*.yaml"]
+       manifests:
+         - k8s-*
   - name: test
     deploy:
       kubectl:
-        manifests: ["k8s/*.yaml"]
+        manifests:
+         - k8s-*
   - name: staging
     deploy:
       kubectl:
-        manifests: ["k8s/*.yaml"]
+        manifests:
+         - k8s-*
   - name: prod
     deploy:
       kubectl:
-        manifests: ["k8s/*.yaml"]
+        manifests:
+         - k8s-*
 portForward:
 - resourceType: deployment
   resourceName: myspringbootapp
