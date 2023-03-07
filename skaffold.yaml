@@ -38,5 +38,5 @@ profiles:
          - k8s-*
 portForward:
 - resourceType: deployment
-  resourceName: myspringbootapp
+  resourceName: k8s-boot
   port: 8080
