@@ -29,7 +29,7 @@ public class ConfigController {
   @GetMapping("/config/volume")
   List<Path> getVolume() throws IOException {
     try (Stream<Path> paths = Files.walk(Paths.get("/myconfigs"))) {
-      var list = paths.filter(Files::isRegularFile).collect(Collectors.toList());
+      List<Path> list = paths.filter(Files::isRegularFile).collect(Collectors.toList());
       return list;
     }
   }
