@@ -7,7 +7,7 @@ metadata:
 spec:
   ports:
   - port: 8080
-    protocol: http
+    protocol: TCP
   selector:
     app: k8s-boot
   type: LoadBalancer
