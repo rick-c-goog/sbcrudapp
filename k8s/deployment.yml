@@ -41,10 +41,10 @@ spec:
             value: "-XX:MaxRAMPercentage=70"
           resources:
             requests:
-              memory: "800Mi"
+              memory: "600Mi"
               cpu: "500m"
             limits:
-              memory: "800Mi"
+              memory: "600Mi"
              # cpu: "2000m"
           livenessProbe:
             httpGet:
