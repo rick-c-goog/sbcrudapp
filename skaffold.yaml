@@ -36,7 +36,7 @@ profiles:
     deploy:
       kubectl:
         manifests:
-         - k8s-*
+         - k8s/*
 portForward:
 - resourceType: deployment
   resourceName: k8s-boot
