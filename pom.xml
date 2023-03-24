@@ -10,9 +10,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
  </parent>
   <groupId>com.example</groupId>
-  <artifactId>k8s-boot</artifactId>
+  <artifactId>spring-boot-complete</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>k8s-boot</name>
+  <name>spring-boot-complete</name>
   <description>Demo project showing best practices for Kubernetes manifests for Spring Boot</description>
 
   <dependencies>
