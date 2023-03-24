@@ -15,6 +15,11 @@
   <name>spring-boot-complete</name>
   <description>Demo project showing best practices for Kubernetes manifests for Spring Boot</description>
 
+ <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>3.0.7</version>
+    </dependency>
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
