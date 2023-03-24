@@ -17,7 +17,7 @@ steps:
       docker image inspect us-central1-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_APP_NAME}:${COMMIT_SHA} --format '{{index .RepoDigests 0}}' > image-digest.txt &&
       cat image-digest.txt
     id: digest
-  # QA Sign the image 
+  # QA Sign the image without CVE checking, https://github.com/grafeas/kritis/blob/master/docs/signer.md
   - name: gcr.io/$PROJECT_ID/kritis-signer
     entrypoint: /bin/bash
     args:
