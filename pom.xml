@@ -6,7 +6,7 @@
   <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.4</version>
+		<version>3.0.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
  </parent>
   <groupId>com.example</groupId>
@@ -15,11 +15,6 @@
   <name>spring-boot-complete</name>
   <description>Demo project showing best practices for Kubernetes manifests for Spring Boot</description>
 
- <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-core</artifactId>
-        <version>3.0.7</version>
-    </dependency>
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
