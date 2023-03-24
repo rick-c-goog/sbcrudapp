@@ -18,21 +18,19 @@ steps:
       cat image-digest.txt
     id: digest
   # QA Sign the image 
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: gcr.io/$PROJECT_ID/kritis-signer
     entrypoint: /bin/bash
     args:
     - -c
     - |
-      gcloud beta container binauthz attestations sign-and-create \
-        --project "$PROJECT_ID" \
-        --artifact-url $(/bin/cat image-digest.txt) \
-        --attestor "qa_attestor" \
-        --attestor-project "$PROJECT_ID" \
-        --keyversion "1" \
-        --keyversion-key "qa-signer" \
-        --keyversion-location "us-central1" \
-        --keyversion-keyring "binauthz" \
-        --keyversion-project "$PROJECT_ID"
+      /kritis/signer \
+      -mode=bypass-and-sign \
+      -v=10 \
+      -alsologtostderr \
+      -image=$(/bin/cat image-digest.txt) \
+      -kms_key_name=${_KMS_KEY_NAME} \
+      -kms_digest_alg=${_KMS_DIGEST_ALG} \
+      -note_name=${_NOTE_NAME}
     id: qasign
     waitFor: ['digest']
 images:
