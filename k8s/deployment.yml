@@ -12,18 +12,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: k8s-boot
-  name: k8s-boot
+    app: myspringbootapp
+  name: myspringbootapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: k8s-boot
+      app: myspringbootapp
   strategy: { }
   template:
     metadata:
       labels:
-        app: k8s-boot
+        app: myspringbootapp
     spec:
       volumes:
         - name: demo-config-volume
@@ -32,7 +32,7 @@ spec:
       containers:
         - image: myspringbootapp
           imagePullPolicy: IfNotPresent
-          name: k8s-boot
+          name: myspringbootapp
           volumeMounts:
             - mountPath: /myconfigs
               name: demo-config-volume
