@@ -13,12 +13,16 @@ build:
     sync:
       auto: true      
 deploy:
+   statusCheck: true
+   statusCheckDeadlineSeconds: 300
    kubectl:
     manifests:
       - k8s/*
 profiles:
   - name: dev
     deploy:
+      statusCheck: true
+      statusCheckDeadlineSeconds: 300
       kubectl:
        manifests:
          - k8s/*
@@ -34,6 +38,8 @@ profiles:
          - k8s/*
   - name: prod
     deploy:
+      statusCheck: true
+      statusCheckDeadlineSeconds: 300
       kubectl:
         manifests:
          - k8s/*
