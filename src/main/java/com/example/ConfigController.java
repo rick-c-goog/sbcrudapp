@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -23,7 +24,11 @@ public class ConfigController {
 
   @GetMapping("/config")
   Map<String, String> get() {
-    return Map.of("message", message, "test", test);
+    Map<String,String> myMap=new HashMap<>();
+    myMap.put("message",message);
+    myMap.put("test",test);
+    //return Map.Entry("message", message, "test", test);
+    return myMap;
   }
 
   @GetMapping("/config/volume")
