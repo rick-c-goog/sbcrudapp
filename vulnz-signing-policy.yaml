@@ -5,7 +5,6 @@ metadata:
 spec:
   imageVulnerabilityRequirements:
     maximumFixableSeverity: LOW
-    maximumUnfixableSeverity: HIGH
+    maximumUnfixableSeverity: MEDIUM
     allowlistCVEs:
-    - projects/goog-vulnz/notes/CVE-2023-0286
-    - projects/goog-vulnz/notes/CVE-2023-0361
+     - projects/goog-vulnz/notes/CVE-2023-21930
