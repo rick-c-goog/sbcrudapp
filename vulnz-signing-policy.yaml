@@ -7,4 +7,4 @@ spec:
     maximumFixableSeverity: LOW
     maximumUnfixableSeverity: MEDIUM
     allowlistCVEs:
-     - projects/goog-vulnz/notes/CVE-2023-21930
+    
