@@ -6,5 +6,5 @@ spec:
   imageVulnerabilityRequirements:
     maximumFixableSeverity: LOW
     maximumUnfixableSeverity: LOW
-    allowlistCVEs: 
+    allowlistCVEs:
     
