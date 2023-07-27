@@ -5,6 +5,6 @@ metadata:
 spec:
   imageVulnerabilityRequirements:
     maximumFixableSeverity: LOW
-    maximumUnfixableSeverity: LOW
+    maximumUnfixableSeverity: MEDIUM
     allowlistCVEs:
     
